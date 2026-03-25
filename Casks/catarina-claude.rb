@@ -1,12 +1,12 @@
 cask "catarina-claude" do
-  version "0.1.2"
+  version "0.1.3"
 
   if Hardware::CPU.arm?
     url "https://github.com/catarina-claude/catarina-claude.github.io/releases/download/v#{version}/catarina-claude-#{version}-macos-arm64.dmg"
-    sha256 :no_check
+    sha256 "b88f18d6a03accb1fb4a91c6fbcd738e2f37a9aacd3fd0705bd6786d012ad8a5"
   else
     url "https://github.com/catarina-claude/catarina-claude.github.io/releases/download/v#{version}/catarina-claude-#{version}-macos-x64.dmg"
-    sha256 :no_check
+    sha256 "8e67a01d1c15453084877659a80d858576c83da34948a3cf780d1e3169684f08"
   end
 
   name "Catarina Claude"
@@ -22,17 +22,6 @@ cask "catarina-claude" do
   depends_on macos: ">= :catalina"
 
   app "Catarina Claude.app"
-
-  # Remove macOS quarantine flag so the app opens without Gatekeeper warnings
-  # (required for apps not signed with an Apple Developer certificate)
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Catarina Claude.app"],
-                   sudo: false
-    system_command "/usr/bin/open",
-                   args: ["#{appdir}/Catarina Claude.app"],
-                   sudo: false
-  end
 
   zap trash: [
     "~/Library/Application Support/com.catarina-claude.app",
