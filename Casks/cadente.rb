@@ -1,12 +1,12 @@
 cask "cadente" do
-  version "1.1.0-beta.2"
+  version "1.1.0-beta.3"
 
   if Hardware::CPU.arm?
     url "https://github.com/cadente-hub/cadente-hub.github.io/releases/download/v#{version}/cadente-#{version}-macos-arm64.dmg"
-    sha256 "ace20c245aeaf0f4e6f79dff76ed5175d23ee068ce51eda10bb48ce54214b401"
+    sha256 "832c472751fd767ad162b8f314d52e8c057ac4f0b35e8edb658e2d69fa192170"
   else
     url "https://github.com/cadente-hub/cadente-hub.github.io/releases/download/v#{version}/cadente-#{version}-macos-x64.dmg"
-    sha256 "10ff878463e7a750d3c0c5829c00a33ce3b5b631236fda214fe2d46ec51b97b8"
+    sha256 "20c1cde1369aa1fb2ca8f0b3330340fe588ece731874063b8772531f8f4fe6e5"
   end
 
   name "Cadente"
@@ -21,11 +21,11 @@ cask "cadente" do
   # Unsigned app: drop the quarantine flag and sign ad-hoc so it opens without the "is damaged" error.
   postflight do
     system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Cadente.app"],
-                   sudo: true
+         args: ["-cr", "#{appdir}/Cadente.app"],
+         sudo: true
     system_command "/usr/bin/codesign",
-                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/Cadente.app"],
-                   sudo: true
+         args: ["--force", "--deep", "--sign", "-", "#{appdir}/Cadente.app"],
+         sudo: true
   end
 
   zap trash: [
