@@ -1,12 +1,12 @@
 cask "cadente" do
-  version "1.1.0-beta.31"
+  version "1.1.0-beta.32"
 
   if Hardware::CPU.arm?
     url "https://github.com/cadente-hub/cadente-hub.github.io/releases/download/v#{version}/cadente-#{version}-macos-arm64.dmg"
-    sha256 "cd44a65199bfd5adb28b13791fee777d70dd43db615550d0a7367bdbf4f15283"
+    sha256 "357cd74f2bcc4232e6d4d5af02c39e4786f8a4d110c7f5f40f2dc529980623c7"
   else
     url "https://github.com/cadente-hub/cadente-hub.github.io/releases/download/v#{version}/cadente-#{version}-macos-x64.dmg"
-    sha256 "84d43ad18d14f5908e5c46d2e46dabdbe6b55e362104bcc2b669e7031cbcd539"
+    sha256 "bbf19857f606b917c60a1bf0e1097b04d40944622e0585191e3416172e344d8c"
   end
 
   name "Cadente"
